@@ -26,6 +26,7 @@ if [ -f ~/.Xresources ]; then
     xrdb ~/.Xresources
 else
     ln .Xresources ~/.Xresources
+    xrdb ~/.Xresources
 fi
 
 if [ -f ~/.tmux.conf ]; then
