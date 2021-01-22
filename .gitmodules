@@ -1,0 +1,9 @@
+[submodule "urxvt-perls"]
+	path = urxvt-perls
+	url = https://github.com/muennich/urxvt-perls.git
+[submodule "urxvt-resize-font"]
+	path = urxvt-resize-font
+	url = https://github.com/simmel/urxvt-resize-font.git
+[submodule "urxvt-perl"]
+	path = urxvt-perl
+	url = https://github.com/effigies/urxvt-perl
