@@ -1,7 +1,9 @@
-#!/bin/bash
+o#i/bin/bash
 
 # this script create hardlink for the configs files.
 # renaming existing ones if found.
+
+
 
 if [ -f ~/.bashrc ]; then
     echo "old .bashrc found. Renamed to old.bashrc"
@@ -28,5 +30,13 @@ if [ -f ~/.tmux.conf ]; then
 fi
 ln .tmux.conf ~/.tmux.conf
 
-#TODO: install urxvt plugins
+# create urxvt scripts folder
+mkdir -p ~/.urxvt/ext/
+
+# link scripts to folder
+
+ln urxvt-perls/keyboard-select /home/vitor/.urxvt/ext/keyboard-select
+ln urxvt-resize-font/resize-font /home/vitor/.urxvt/ext/resize-font
+# fullscreen needs wmctrl to work"
+ln urxvt-perl/fullscreen /home/vitor/.urxvt/ext/fullscreen
 
