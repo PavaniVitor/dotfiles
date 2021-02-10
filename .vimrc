@@ -18,7 +18,9 @@ set incsearch " make search act like in modern browsers
 
 set showmatch " show matching brackets
 
-"relative number in normal mode
+set backspace=indent,eol,start
+
+" relative number in normal mode
 :set number relativenumber
 " norelative number in insert mode
 :augroup numbertoggle
@@ -35,13 +37,16 @@ set noswapfile
 
 set autoread "auto read when a file is changed from outside
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
 set wildmenu " tab completion menu
 
 :color elflord
+
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/taketwo/vim-ros.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/zacanger/angr.vim.git'
+
+call plug#end()
 
