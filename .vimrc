@@ -1,4 +1,11 @@
 
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/taketwo/vim-ros.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/zacanger/angr.vim.git'
+
+call plug#end()
 
 
 set tabstop=4
@@ -39,14 +46,7 @@ set autoread "auto read when a file is changed from outside
 
 set wildmenu " tab completion menu
 
-:color elflord
+:color angr
 
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'https://github.com/taketwo/vim-ros.git'
-Plug 'https://github.com/kien/ctrlp.vim.git'
-Plug 'https://github.com/zacanger/angr.vim.git'
-
-call plug#end()
+syntax on
 
