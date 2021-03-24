@@ -4,9 +4,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/taketwo/vim-ros.git'
 Plug 'https://github.com/kien/ctrlp.vim.git'
 Plug 'https://github.com/zacanger/angr.vim.git'
+Plug 'https://github.com/itchyny/lightline.vim.git'
 
 call plug#end()
 
+set splitright "open vsplit files on the right side"
+
+set laststatus=2 " lightline
+set noshowmode " get rid of -- insert --
 
 set tabstop=4
 set shiftwidth=4
