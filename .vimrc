@@ -1,7 +1,6 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'https://github.com/taketwo/vim-ros.git'
 Plug 'https://github.com/kien/ctrlp.vim.git'
 Plug 'https://github.com/zacanger/angr.vim.git'
 Plug 'https://github.com/itchyny/lightline.vim.git'
