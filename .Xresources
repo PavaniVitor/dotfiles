@@ -5,7 +5,7 @@ URxvt.scrollBar: false
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-URxvt.perl-ext-common: default, resize-font, fullscreen, keyboard-select
+URxvt.perl-ext-common: default,resize-font,keyboard-select,fullscreen
 
 ! resize-font config
 URxvt.keysym.C-minus:     resize-font:smaller
@@ -15,7 +15,7 @@ URxvt.keysym.C-question:  resize-font:show
 URxvt.resize-font.step: 2
 
 ! fullscreen
-URxvt.keysym.f11: perl:fullscreen:switch
+URxvt.keysym.F11: perl:fullscreen:switch
 
 ! keyboard-select config
 
