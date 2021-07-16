@@ -5,6 +5,10 @@ Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/vim-scripts/xoria256.vim.git' 
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/davidhalter/jedi-vim.git'
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/tpope/vim-commentary.git'
+Plug 'https://github.com/tpope/vim-repeat.git'
+Plug 'https://github.com/vim-scripts/AutoClose.git'
 call plug#end()
 
 " disable arrow keys
@@ -78,7 +82,6 @@ set ttimeoutlen=5
 set makeprg=catkin_make
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " turn on omnicompletion
