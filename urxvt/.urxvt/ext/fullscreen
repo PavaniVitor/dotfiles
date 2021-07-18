@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+# Toggle fullscreen
+#
+# URxvt.perl-ext-common: fullscreen
+# URxvt.keysym.F11: perl:fullscreen:switch
+#
+# This is an adaptation of urxvt-perl script packaged by Arch Linux user
+# chris_l: https://aur.archlinux.org/packages/urxvt-fullscreen/
+# The package information states that the script is released under the GPL.
+#
+# Copyright (C) 2014        Christopher Johnson
+# Copyright (C) 2010-2011   Christoph Lohmann
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+sub on_user_command {
+    my ($self, $cmd) = @_;
+    if ($cmd eq "fullscreen:switch") {
+        my $dummy = `wmctrl -r :ACTIVE: -b toggle,fullscreen` ;
+    }
+}
