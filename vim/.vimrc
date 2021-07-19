@@ -1,3 +1,4 @@
+set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
@@ -8,7 +9,7 @@ Plug 'https://github.com/davidhalter/jedi-vim.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'https://github.com/tpope/vim-repeat.git'
-Plug 'https://github.com/vim-scripts/AutoClose.git'
+
 call plug#end()
 
 " disable arrow keys
