@@ -5,12 +5,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/vim-scripts/xoria256.vim.git' 
 Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/davidhalter/jedi-vim.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'https://github.com/tpope/vim-repeat.git'
-
+Plug 'https://github.com/ycm-core/YouCompleteMe.git'
 call plug#end()
+
 
 " disable arrow keys
 noremap <Up> <Nop>
@@ -18,6 +18,7 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+set splitbelow "open split below
 set splitright "open vsplit files on the right side"
 set tags+=~/.vim/tags/ros/tags
 
@@ -46,7 +47,14 @@ set backspace=indent,eol,start
 " faster scrool with C-e C-y
 nnoremap <C-y> 5<C-y>
 nnoremap <C-e> 5<C-e>
-" insert newline with enter in normal mode
+
+" move lines with <C-j><C-h>
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 
 :set number relativenumber
@@ -85,12 +93,14 @@ set makeprg=catkin_make
 set statusline+=%#warningmsg#
 set statusline+=%*
 
-" turn on omnicompletion
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+" YouCompleteMe stuff
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
+let g:ycm_language_server =
+  \ [{
+  \   'name': 'ccls',
+  \   'cmdline': [ 'ccls' ],
+  \   'filetypes': [ 'c', 'cpp', 'cuda', 'objc', 'objcpp' ],
+  \   'project_root_files': [ '.ccls-root', 'compile_commands.json' ]
+  \ }]
