@@ -35,6 +35,9 @@ bind '"\e[B": history-search-forward' 2>/dev/null
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" 
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -107,4 +110,4 @@ alias tmux='tmux -2'
 if [ -f ~/.localrc ]; then
     . ~/.localrc        
 fi
- 
+

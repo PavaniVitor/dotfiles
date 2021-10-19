@@ -4,7 +4,7 @@ URxvt.letterSpace: 0
 URxvt.scrollBar: false
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-
+URxvt.meta8: true
 URxvt.perl-ext-common: default,resize-font,keyboard-select,fullscreen
 
 ! resize-font config
