@@ -12,7 +12,7 @@ export PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0
 
 
 
-if which exa >/dev/null; then
+if  which exa 2>/dev/null ; then
 	# exa is a modern ls replacement with Git integration: https://the.exa.website
 	alias ls="exa --git-ignore"
 	alias ll="exa --git-ignore --git -l --group"
@@ -60,7 +60,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # If ag is not installed, alias it to "grep -rn" (and generally force color for grep)
 alias grep="grep --color=always"
-which ag >/dev/null || alias ag="grep -rn"
+which ag 2>/dev/null  || alias ag="grep -rn"
 
 # Open file with open
 alias open="xdg-open"
