@@ -5,7 +5,10 @@ URxvt.scrollBar: false
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 URxvt.meta8: true
-URxvt.perl-ext-common: default,resize-font,keyboard-select,fullscreen
+URxvt.perl-ext-common: default,matcher,resize-font,keyboard-select,fullscreen
+
+URxvt.matcher.launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
 
 ! resize-font config
 URxvt.keysym.C-minus:     resize-font:smaller
