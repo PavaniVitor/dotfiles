@@ -13,7 +13,6 @@ Plug 'https://github.com/tpope/vim-repeat.git'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'williamboman/nvim-lsp-installer'
-
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -21,6 +20,10 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'onsails/lspkind-nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+" file navigation
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -115,5 +118,12 @@ set ttimeoutlen=5
 set statusline+=%#warningmsg#
 set statusline+=%*
 
+" lsp keybindings
+nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<CR> 
+nnoremap <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
+" telescope keybindings
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 
