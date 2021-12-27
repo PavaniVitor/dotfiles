@@ -1,5 +1,5 @@
 
-FOLDERS="bash,tmux,urxvt,vim"
+FOLDERS="bash,tmux,urxvt,vim,nvim"
 
 for folder in $(echo $FOLDERS | sed "s/,/ /g")
 do

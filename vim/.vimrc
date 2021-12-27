@@ -3,14 +3,29 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 Plug 'https://github.com/itchyny/lightline.vim.git'
-Plug 'https://github.com/vim-scripts/xoria256.vim.git' 
+Plug 'vim-scripts/xoria256.vim'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'https://github.com/tpope/vim-repeat.git'
-Plug 'https://github.com/ycm-core/YouCompleteMe.git'
+
+" autocompletion stuff
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'williamboman/nvim-lsp-installer'
+
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'onsails/lspkind-nvim'
+Plug 'windwp/nvim-autopairs'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+
 call plug#end()
 
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " disable arrow keys
 noremap <Up> <Nop>
@@ -20,7 +35,6 @@ noremap <Right> <Nop>
 
 set splitbelow "open split below
 set splitright "open vsplit files on the right side"
-set tags+=~/.vim/tags/ros/tags
 
 set laststatus=2 " lightline
 set noshowmode " get rid of -- insert --
@@ -56,6 +70,17 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+inoremap " "<c-g>u
+inoremap ' '<c-g>u
+
 
 :set number relativenumber
 " norelative number in insert mode
@@ -75,8 +100,7 @@ set autoread "auto read when a file is changed from outside
 
 set wildmenu " tab completion menu
 
-:color xoria256 
-
+:color xoria256
 set showcmd
 syntax on
 
@@ -88,24 +112,8 @@ let g:netrw_altv=1          " open split to the right
 " remove the annoying esc delay
 set ttimeoutlen=5
 
-set makeprg=catkin_make
-
 set statusline+=%#warningmsg#
 set statusline+=%*
 
-" YouCompleteMe stuff
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-let g:ycm_language_server =
-  \ [{
-  \   'name': 'ccls',
-  \   'cmdline': [ 'ccls' ],
-  \   'filetypes': [ 'c', 'cpp', 'cuda', 'objc', 'objcpp' ],
-  \   'project_root_files': [ '.ccls-root', 'compile_commands.json' ]
-  \ }]
-
-nnoremap <leader>gt :YcmCompleter GoTo<CR>
-nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
