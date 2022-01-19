@@ -1,5 +1,6 @@
-set nocompatible 
+set nocompatible
 
+set termguicolors
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
@@ -9,24 +10,28 @@ set splitright "open vsplit files on the right side"
 set laststatus=2 " lightline
 set noshowmode " get rid of -- insert --
 
+set guicursor=
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab " use spaces instead of spaces.
 set smarttab
-set shiftround 
+set shiftround
 set autoindent
 set smartindent
 
 " Sane search
 set ignorecase " case insensitive search
 set smartcase " if there are uppercase letters, become case-sensitive
-set hlsearch " highlight search
 set incsearch " make search act like in modern browsers
+set hlsearch
 
 set showmatch " show matching brackets
-
 set backspace=indent,eol,start
+
+
+set undodir=~/.vim/undodir
+set undofile
 
 :set number relativenumber
 " norelative number in insert mode
@@ -37,17 +42,32 @@ set backspace=indent,eol,start
 
 :augroup END
 
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+augroup TRIM_SPACES
+    autocmd!
+    autocmd BufWritePre * :call TrimWhitespace()
+augroup END
+
+
 " turn backup off
 set nobackup
-set nowb 
+set nowb
 set noswapfile
 
 set autoread "auto read when a file is changed from outside
 
 set wildmenu " tab completion menu
 
-:color xoria256
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
+set signcolumn=yes
+set scrolloff=8
 set showcmd
 syntax on
 

@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'https://github.com/itchyny/lightline.vim.git'
-Plug 'vim-scripts/xoria256.vim'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
@@ -19,9 +18,14 @@ Plug 'onsails/lspkind-nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'gruvbox-community/gruvbox'
+
 " file navigation
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'jesseleite/vim-noh'
 
 call plug#end()
 
