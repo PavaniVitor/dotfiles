@@ -8,7 +8,6 @@ Plug 'https://github.com/tpope/vim-repeat.git'
 
 " autocompletion stuff
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'

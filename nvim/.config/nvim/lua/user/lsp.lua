@@ -4,7 +4,7 @@ local lsp_installer = require("nvim-lsp-installer")
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
-    local opts = { on_attach=require'completion'.on_attach }
+    local opts = {}
 
     -- (optional) Customize the options passed to the server
     -- if server.name == "tsserver" then
