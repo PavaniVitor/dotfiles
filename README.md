@@ -2,7 +2,7 @@
 
 ### installation:
 this repository uses stow to manage dotfiles
-`sudo apt install stow`
+`sudo pacman -S stow`
 
 ```
 cd dotfiles
