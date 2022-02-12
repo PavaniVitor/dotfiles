@@ -1,6 +1,7 @@
-
-URxvt.font: xft:monospace:size=12
-URxvt.letterSpace: 0
+URxvt.termName: rxvt-unicode
+URxvt.font: xft:SauceCodePro Nerd Font Mono:size=12
+URxvt.letterSpace: -1
+URxvt.lineSpace: -1
 URxvt.scrollBar: false
 URxvt.iso14755: false
 URxvt.iso14755_52: false
@@ -24,7 +25,7 @@ URxvt.keysym.F11: perl:fullscreen:switch
 
 URxvt.keysym.M-Escape: keyboard-select:activate
 URxvt.keysym.M-s: keyboard-select:search
-URxvt.keyboard-select.clipboard: true 
+URxvt.keyboard-select.clipboard: true
 
 ! colors
 *.foreground:  #d0d0d0
