@@ -28,6 +28,11 @@ cmp.setup {
                 calc = "[Calc]",
                 emoji = "[Emoji]"
             })[entry.source.name]
+            vim_item.dup = ({
+                buffer = 1,
+                path = 1,
+                nvim_lsp = 0,
+            })[entry.source.name] or 0
             return vim_item
         end
     },
@@ -44,7 +49,10 @@ cmp.setup {
             }),
     },
     sources = {
-        {name = 'buffer'}, {name = 'nvim_lsp'}, {name = "ultisnips"}, {name = 'nvim_lsp_signature_help'}
+        {name = 'buffer'},
+        {name = 'nvim_lsp'},
+        {name = "ultisnips"},
+        {name = 'nvim_lsp_signature_help'}
     },
     completion = {completeopt = 'menu,menuone,noinsert'}
 }
