@@ -9,4 +9,5 @@ require("user.keymaps")
 require("user.treesitter")
 require("user.filetypes")
 require("user.colorizer")
+require("user.guess-ident")
 

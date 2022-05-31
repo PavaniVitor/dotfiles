@@ -1,9 +1,8 @@
 
 local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
-
 -- arduino language server from lsp_installer doesn't work so install it manually.
-local MY_FQBN = "arduino:avr:uno"
+local MY_FQBN = "arduino:avr:leonardo"
 lspconfig.arduino_language_server.setup {
     cmd = {
         "arduino-language-server",

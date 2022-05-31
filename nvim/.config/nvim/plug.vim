@@ -19,6 +19,7 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'gruvbox-community/gruvbox'
+Plug 'NMAC427/guess-indent.nvim'
 
 " file navigation
 Plug 'nvim-lua/plenary.nvim'
