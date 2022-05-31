@@ -25,6 +25,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'jesseleite/vim-noh'
+Plug 'norcalli/nvim-colorizer.lua'
 
 call plug#end()
 
