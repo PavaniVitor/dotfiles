@@ -12,7 +12,7 @@ export PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0
 
 
 
-if  which exa 2>/dev/null ; then
+if  which exa > /dev/null 2>&1; then
 	# exa is a modern ls replacement with Git integration: https://the.exa.website
 	alias ls="exa --git-ignore"
 	alias ll="exa --git-ignore --git -l --group"
@@ -36,7 +36,7 @@ bind '"\e[B": history-search-forward' 2>/dev/null
 HISTCONTROL=ignoreboth
 
 # After each command, save and reload history
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" 
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -103,11 +103,11 @@ bind "set menu-complete-display-prefix on"
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-# tmux alias to work with colors 
+# tmux alias to work with colors
 alias tmux='tmux -2'
 
 # Source local configs
 if [ -f ~/.localrc ]; then
-    . ~/.localrc        
+    . ~/.localrc
 fi
 
