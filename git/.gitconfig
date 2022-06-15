@@ -1,0 +1,5 @@
+[user]
+	email = vitorpavani@poli.ufrj.br
+	name = Vitor Pavani
+[core]
+	excludesFile = ~/.gitignore
