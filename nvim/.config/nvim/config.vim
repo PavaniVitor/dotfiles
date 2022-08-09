@@ -4,6 +4,7 @@ set termguicolors
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
+set mouse=
 set splitbelow "open split below
 set splitright "open vsplit files on the right side"
 
