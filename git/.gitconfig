@@ -3,3 +3,5 @@
 	name = Vitor Pavani
 [core]
 	excludesFile = ~/.gitignore
+[init]
+	defaultBranch = main
