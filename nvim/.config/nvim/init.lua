@@ -10,4 +10,5 @@ require("user.treesitter")
 require("user.filetypes")
 require("user.colorizer")
 require("user.guess-ident")
+require("user.null-ls")
 

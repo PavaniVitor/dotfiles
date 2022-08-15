@@ -8,7 +8,6 @@ Plug 'https://github.com/tpope/vim-repeat.git'
 
 " autocompletion stuff
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -16,6 +15,11 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'onsails/lspkind-nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'gruvbox-community/gruvbox'
