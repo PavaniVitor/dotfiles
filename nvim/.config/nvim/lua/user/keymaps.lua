@@ -42,9 +42,8 @@ keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 keymap("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
 -- telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
-
