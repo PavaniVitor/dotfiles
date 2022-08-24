@@ -3,5 +3,21 @@
 	name = Vitor Pavani
 [core]
 	excludesFile = ~/.gitignore
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 [init]
 	defaultBranch = main
+[alias]
+	# https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+
+	# `git di $number` shows the diff between the state `$number` revisions ago and the current state.
+	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+	# Remove the old tag with this name and tag the latest commit with it.
+	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
