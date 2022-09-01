@@ -3,7 +3,7 @@
 
 -- ROS xml files
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-    pattern = {"*.launch", "*.world"},
+    pattern = {"*.launch", "*.world", "*.sdf"},
     command = "set filetype=xml"
 })
 
