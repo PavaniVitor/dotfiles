@@ -11,4 +11,5 @@ require("user.filetypes")
 require("user.colorizer")
 require("user.guess-ident")
 require("user.null-ls")
+require("user.autocommands")
 
