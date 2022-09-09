@@ -1,7 +1,9 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
-local yank_group = augroup('HighlightYank', {})
+local yank_group = augroup('highlight_yank', {})
+local relative_number = augroup('relative_number', {})
+local cursor_line = augroup('cursor_line', {})
 local pavani = augroup('pavani', {})
 
 
@@ -22,5 +24,36 @@ autocmd('VimResized', {
     group = pavani,
     pattern = '*',
     command = 'execute "normal! \\<c-w>="',
+})
+
+-- trim whitespaces
+autocmd({"BufWritePre"}, {
+    group = pavani,
+    pattern = "*",
+    command = "%s/\\s\\+$//e",
+})
+
+-- relative numbers in insert mode
+autocmd({"BufEnter", "FocusGained", "InsertLeave"}, {
+    group = relative_number,
+    pattern = "*",
+    command = 'set relativenumber',
+})
+autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
+    group = relative_number,
+    pattern = "*",
+    command = 'set norelativenumber',
+})
+
+-- highlight cursor line
+autocmd({"VimEnter", "WinEnter", "BufWinEnter"}, {
+    group = cursor_line,
+    pattern = "*",
+    command = 'setlocal cursorline',
+})
+autocmd({"WinLeave"}, {
+    group = cursor_line,
+    pattern = "*",
+    command = 'setlocal nocursorline',
 })
 

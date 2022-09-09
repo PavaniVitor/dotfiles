@@ -1,5 +1,3 @@
-set nocompatible
-
 set termguicolors
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
@@ -35,30 +33,6 @@ set undodir=~/.vim/undodir
 set undofile
 
 :set number relativenumber
-" norelative number in insert mode
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-
-:augroup END
-
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup END
-
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-
-augroup TRIM_SPACES
-    autocmd!
-    autocmd BufWritePre * :call TrimWhitespace()
-augroup END
 
 
 " turn backup off
