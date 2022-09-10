@@ -1,7 +1,7 @@
 vim.cmd[[
     source ~/.config/nvim/plug.vim
-    source ~/.config/nvim/config.vim
 ]]
+require("user.options")
 require("user.lsp")
 require("user.autopairs")
 require("user.cmp")
