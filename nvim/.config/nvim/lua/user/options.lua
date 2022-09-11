@@ -2,9 +2,11 @@ local set = vim.opt
 
 -- styling
 set.termguicolors = true
--- set.guicursor = "="
+set.guicursor = ""
+set.mouse = ""
+
 -- set.noshowmode = true
-set.relativenumber = true
+set.number = true
 set.signcolumn = "yes"
 
 set.splitbelow = true
