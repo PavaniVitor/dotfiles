@@ -28,7 +28,7 @@ set.incsearch = true
 set.hlsearch = true
 
 set.showmatch = true
-set.backspace=indent,eol,start
+set.backspace="indent,eol,start"
 
 set.completeopt = {"menuone", "noinsert", "noselect"}
 
