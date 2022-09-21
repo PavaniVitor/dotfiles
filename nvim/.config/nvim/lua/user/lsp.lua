@@ -10,16 +10,26 @@ require("mason-lspconfig").setup_handlers({
 
 local lspconfig = require("lspconfig")
 -- arduino language server from lsp_installer doesn't work so install it manually.
-local MY_FQBN = "arduino:avr:leonardo"
+lspconfig.gdscript.setup {}
+
+
+-- TODO: download arduino-ide and steal lsp dependencies.
+
+local MY_FQBN = "teensy:avr:teensy41"
+local arduino_lsp_folder = os.getenv("HOME") .. "/arduino-ls/resources/app/node_modules/arduino-ide-extension/build/"
+local arduino_config_folder = os.getenv("HOME") ..  "/.arduinoIDE/"
+
 lspconfig.arduino_language_server.setup {
     cmd = {
-        "arduino-language-server",
-        "-cli-config", "/home/vitor/.arduino15/arduino-cli.yaml",
-        "-cli", "/home/vitor/.local/bin/arduino-cli",
+          arduino_lsp_folder .. "arduino-language-server",
+        "-clangd",  arduino_lsp_folder .. "clangd",
+        "-cli", arduino_lsp_folder .. "arduino-cli",
         "-fqbn", MY_FQBN,
-        "-cli-daemon-addr", "localhost:50051",
-        "-cli-daemon-instance", "1",
-        "-clangd", "/usr/bin/clangd"
+        "-cli-config", arduino_config_folder .. "arduino-cli.yaml"
+        -- "-cli-daemon-addr", "localhost:50051",
+        -- "-cli-daemon-instance", "1",
+        -- "-skip-libraries-discovery-on-rebuild",
+        -- "-board-name", "Teensy 4.1"
     }
 }
 
