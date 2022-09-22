@@ -26,6 +26,7 @@ set.ignorecase = true
 set.smartcase = true
 set.incsearch = true
 set.hlsearch = true
+set.showmode = false
 
 set.showmatch = true
 set.backspace="indent,eol,start"
