@@ -36,12 +36,7 @@ lspconfig.arduino_language_server.setup { cmd = {
 local win = nil
 local arduino_command = function(command, message)
 
-    if win == nil then
-        vim.cmd('split')
-        win = vim.api.nvim_get_current_win()
-    end
-
-    if not vim.api.nvim_win_is_valid(win) then
+    if win == nil or not vim.api.nvim_win_is_valid(win) then
         vim.cmd('split')
         win = vim.api.nvim_get_current_win()
     end
@@ -65,7 +60,6 @@ local arduino_command = function(command, message)
         on_stdout = append_data,
         on_stderr = append_data
     })
-    print(win)
 end
 
 
