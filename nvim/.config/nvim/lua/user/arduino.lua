@@ -33,11 +33,14 @@ lspconfig.arduino_language_server.setup { cmd = {
 }
 }
 
+local win = nil
 local arduino_command = function(command, message)
 
-    vim.cmd('split')
+    if win == nil then
+        vim.cmd('split')
+        win = vim.api.nvim_get_current_win()
+    end
 
-    local win = vim.api.nvim_get_current_win()
     local output_bufnr = vim.api.nvim_create_buf(true, true)
 
     vim.api.nvim_win_set_buf(win, output_bufnr)
