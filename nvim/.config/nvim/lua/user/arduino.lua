@@ -48,17 +48,19 @@ local arduino_command = function(command, message)
     local append_data = function(_, data)
         if data then
             vim.api.nvim_buf_set_lines(output_bufnr, -1, -1, false, data)
+            vim.api.nvim_set_current_win(win)
             vim.cmd('%s/\\%x1b\\[[0-9;]*m//g') -- idk strip colors from cli output
         end
     end
 
-    vim.api.nvim_buf_set_lines(0, 0, -1, false, {message})
+    vim.api.nvim_buf_set_lines(output_bufnr, -1, -1, false, {message})
 
     vim.fn.jobstart(command, {
         stdout_buffered = true,
         on_stdout = append_data,
         on_stderr = append_data
     })
+    print(win)
 end
 
 
