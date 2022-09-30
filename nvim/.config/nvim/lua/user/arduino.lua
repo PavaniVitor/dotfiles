@@ -41,6 +41,11 @@ local arduino_command = function(command, message)
         win = vim.api.nvim_get_current_win()
     end
 
+    if not vim.api.nvim_win_is_valid(win) then
+        vim.cmd('split')
+        win = vim.api.nvim_get_current_win()
+    end
+
     local output_bufnr = vim.api.nvim_create_buf(true, true)
 
     vim.api.nvim_win_set_buf(win, output_bufnr)
