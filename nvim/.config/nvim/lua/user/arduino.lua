@@ -75,6 +75,7 @@ local upload = function(upload_port)
     arduino_command(command, command)
 end
 
+
 -- create Arduino user commands.
 api.nvim_create_user_command("ArduinoCompile", function()
     compile()
@@ -82,11 +83,7 @@ end, { nargs = 0})
 
 api.nvim_create_user_command("ArduinoUpload", function(opts)
     upload(opts.args)
-end, { nargs = 1})
-
-api.nvim_create_user_command("ArduinoCli", function(opts)
-    arduino_command(arduino_cli .. " " .. opts.args, "")
-end, { nargs = "?"})
+end, { nargs = 1, complete = 'file'})
 
 api.nvim_create_user_command("ArduinoCli", function(opts)
     arduino_command(arduino_cli .. " " .. opts.args, "")
@@ -94,4 +91,5 @@ end, { nargs = "?"})
 
 -- TODO:
 -- create user command to edit arduino-cli.yaml
+-- create completion to ArduinoCli command
 
