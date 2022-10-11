@@ -1,5 +1,4 @@
 local opts = { noremap = true, silent = true }
-
 local keymap = vim.api.nvim_set_keymap
 
 -- disable arrow keys
@@ -21,8 +20,8 @@ keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- keep cursor centered on jumping to next/previos and joining lines
-keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
+keymap("n", "n", "nzzzv", opts)
 keymap("n", "J", "mzJ`z", opts)
 
 -- insert undo checkpoints on symbols
@@ -47,3 +46,5 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 -- telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
+
