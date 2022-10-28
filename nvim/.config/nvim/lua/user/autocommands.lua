@@ -30,7 +30,12 @@ autocmd('VimResized', {
 autocmd({"BufWritePre"}, {
     group = pavani,
     pattern = "*",
-    command = "%s/\\s\\+$//e",
+    callback = function()
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    local command = "%s/\\s\\+$//e"
+    vim.cmd(command)
+    vim.api.nvim_win_set_cursor(0, cursor)
+    end,
 })
 
 -- relative numbers in insert mode
