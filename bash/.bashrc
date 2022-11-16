@@ -111,3 +111,5 @@ if [ -f ~/.localrc ]; then
     . ~/.localrc
 fi
 
+export EDITOR=nvim
+
