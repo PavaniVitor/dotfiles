@@ -32,7 +32,7 @@ window:
   # fall back to the window manager's recommended size.
   dimensions:
     columns: 140
-    lines: 40
+    lines: 35
 
   # Window position (changes require restart)
   #
@@ -114,21 +114,19 @@ font:
   # Normal (roman) font face
   normal:
     # https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf
-    family: SauceCodePro NFM
+    family: JetBrainsMono
     # The `style` can be specified to pick a specific face.
     style: Regular
 
   # Italic font face
   bold:
-    # family: Source Code Pro for Powerline
-    family: SauceCodePro NFM
+    family: JetBrainsMono
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
   italic:
-    # family: Source Code Pro for Powerline
-    family: SauceCodePro NFM
+    family: JetBrainsMono
     # The `style` can be specified to pick a specific face.
     style: Italic
 
