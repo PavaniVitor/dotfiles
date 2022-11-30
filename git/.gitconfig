@@ -15,7 +15,9 @@
 
 	# Remove the old tag with this name and tag the latest commit with it.
 	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
-	recursive = submodule update --init --recursive
+
+	# sync and init submodules
+	recursive = "!r() { git submodule sync --recursive && git submodule update --init --recursive; }; r"
 
 [url "git@gitlab.com:"]
     insteadOf = https://gitlab.com/
