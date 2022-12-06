@@ -47,4 +47,5 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
+keymap("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", opts)
 
