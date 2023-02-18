@@ -6,6 +6,8 @@ local relative_number = augroup('relative_number', {})
 local cursor_line = augroup('cursor_line', {})
 local pavani = augroup('pavani', {})
 
+local sudo_write = require("user.sudo")
+
 
 -- highlight yanked text
 autocmd('TextYankPost', {
@@ -31,10 +33,23 @@ autocmd({"BufWritePre"}, {
     group = pavani,
     pattern = "*",
     callback = function()
-    local cursor = vim.api.nvim_win_get_cursor(0)
-    local command = "%s/\\s\\+$//e"
-    vim.cmd(command)
-    vim.api.nvim_win_set_cursor(0, cursor)
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        local command = "%s/\\s\\+$//e"
+        vim.cmd(command)
+        vim.api.nvim_win_set_cursor(0, cursor)
+    end,
+})
+
+-- write sudo files
+autocmd({"BufWriteCmd", }, {
+    group = pavani,
+    pattern = "*",
+    callback = function()
+        local ok, result = pcall( vim.cmd, 'w')
+        if (ok) then
+            return
+        end
+        sudo_write()
     end,
 })
 
