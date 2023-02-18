@@ -111,5 +111,10 @@ if [ -f ~/.localrc ]; then
     . ~/.localrc
 fi
 
-export EDITOR=nvim
+# use vim as pager
+if [[ "$(command -v nvim)" ]]; then
+    export EDITOR='nvim'
+    export MANPAGER='nvim --clean +Man!'
+    export MANWIDTH=999
+fi
 
