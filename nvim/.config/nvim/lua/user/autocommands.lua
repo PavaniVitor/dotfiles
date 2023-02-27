@@ -50,6 +50,7 @@ autocmd({"BufWriteCmd", }, {
             return
         end
         sudo_write()
+	vim.cmd("e! %")
     end,
 })
 
