@@ -28,8 +28,8 @@ autocmd('VimResized', {
     command = 'execute "normal! \\<c-w>="',
 })
 
--- trim whitespaces
-autocmd({"BufWritePre"}, {
+-- trim whitespaces and write sudo files
+autocmd({"BufWriteCmd", }, {
     group = pavani,
     pattern = "*",
     callback = function()
@@ -37,14 +37,6 @@ autocmd({"BufWritePre"}, {
         local command = "%s/\\s\\+$//e"
         vim.cmd(command)
         vim.api.nvim_win_set_cursor(0, cursor)
-    end,
-})
-
--- write sudo files
-autocmd({"BufWriteCmd", }, {
-    group = pavani,
-    pattern = "*",
-    callback = function()
         local ok, result = pcall( vim.cmd, 'w')
         if (ok) then
             return
