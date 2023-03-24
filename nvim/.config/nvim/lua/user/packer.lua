@@ -35,5 +35,7 @@ return require('packer').startup(function()
 
     use 'jesseleite/vim-noh'
     use 'norcalli/nvim-colorizer.lua'
+    use 'nvim-treesitter/nvim-treesitter-context'
+    use 'sindrets/diffview.nvim'
 
 end)
