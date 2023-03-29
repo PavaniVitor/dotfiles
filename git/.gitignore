@@ -2,3 +2,5 @@
 compile_commands.json
 .cache/
 __pycache__/
+log.*
+processor*
