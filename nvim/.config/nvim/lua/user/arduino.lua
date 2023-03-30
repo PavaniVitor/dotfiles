@@ -1,37 +1,52 @@
 
 local api = vim.api
-local lspconfig = require("lspconfig")
 
 -- setup:
 -- download arduino-ide 2.0 and place its folder path below.
-local board_name = "teensy:avr:teensy41" -- arduino FBQN
-local arduino_ide_folder = "/home/vitor/arduino-ide/"
--- this will probably work, but .arduino15 can be .arduinoIDE if you use the ide 2.0
--- TODO: check for both?
-local arduino_cli_yaml = os.getenv("HOME") ..  "/.arduino15/arduino-cli.yaml"
 
+local config = {
+    board_name = "arduino:avr:mega",
+    ide_folder_path = os.getenv("HOME") .. "/arduino-ide/",
+    cli_yaml_path = os.getenv("HOME") ..  "/.arduino15/arduino-cli.yaml"
+}
 
 -- Don't touch its art
-local arduino_bin_folder = arduino_ide_folder .. "resources/app/node_modules/arduino-ide-extension/build/"
+local arduino_bin_folder = config.ide_folder_path .. "resources/app/node_modules/arduino-ide-extension/build/"
 local arduino_cli = arduino_bin_folder .. "arduino-cli"
 local clangd = arduino_bin_folder .. "clangd"
 local arduino_lsp = arduino_bin_folder .. "arduino-language-server"
 
-
 -- TODO:
--- check for nvim lspconfig before setup lsp.
-lspconfig.arduino_language_server.setup { cmd = {
-    arduino_lsp,
-    "-clangd", clangd,
-    "-cli", arduino_cli,
-    "-fqbn", board_name,
-    "-cli-config", arduino_cli_yaml
-    -- "-cli-daemon-addr", "localhost:50051",
-    -- "-cli-daemon-instance", "1",
-    -- "-skip-libraries-discovery-on-rebuild",
-    -- "-board-name", "Teensy 4.1"
+-- allow passing additional args to arduino_lsp
+
+local lsp_status_ok, lspconfig = pcall(require, "lspconfig")
+
+-- configure arduino_lsp if lspconfig is present
+
+local function pretty_print(obj)
+    print(vim.inspect(obj))
+end
+
+if lsp_status_ok then
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+    capabilities.textDocument.semanticTokens = vim.NIL
+    capabilities.workspace.semanticTokens = vim.NIL
+
+    lspconfig.arduino_language_server.setup {
+        capabilities = capabilities,
+        on_attach = function(client, buf)
+            -- pretty_print(capabilities)
+        end,
+        cmd = {
+            arduino_lsp,
+            "-clangd", clangd,
+            "-cli", arduino_cli,
+            "-fqbn", config.board_name,
+            "-cli-config", config.cli_yaml_path
+    }
 }
-}
+end
 
 local win = nil
 local arduino_command = function(command, message)
@@ -49,11 +64,13 @@ local arduino_command = function(command, message)
         if data then
             vim.api.nvim_buf_set_lines(output_bufnr, -1, -1, false, data)
             vim.api.nvim_set_current_win(win)
-            vim.cmd('%s/\\%x1b\\[[0-9;]*m//g') -- idk strip colors from cli output
         end
     end
 
     vim.api.nvim_buf_set_lines(output_bufnr, -1, -1, false, {message})
+
+    -- TODO: allow colored output
+    command = command .. " --no-color"
 
     vim.fn.jobstart(command, {
         stdout_buffered = true,
@@ -65,7 +82,7 @@ end
 
 local compile = function()
     local ino_file = vim.api.nvim_buf_get_name(0)
-    local command = arduino_cli .. " compile -b " .. board_name .. " " .. ino_file
+    local command = arduino_cli .. " compile -b " .. config.board_name .. " " .. ino_file
     arduino_command(command, command)
 end
 
