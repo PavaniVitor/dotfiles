@@ -23,10 +23,6 @@ local lsp_status_ok, lspconfig = pcall(require, "lspconfig")
 
 -- configure arduino_lsp if lspconfig is present
 
-local function pretty_print(obj)
-    print(vim.inspect(obj))
-end
-
 if lsp_status_ok then
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -36,7 +32,6 @@ if lsp_status_ok then
     lspconfig.arduino_language_server.setup {
         capabilities = capabilities,
         on_attach = function(client, buf)
-            -- pretty_print(capabilities)
         end,
         cmd = {
             arduino_lsp,

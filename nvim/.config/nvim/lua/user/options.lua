@@ -9,6 +9,8 @@ set.mouse = ""
 set.number = true
 set.signcolumn = "yes"
 
+set.isfname:remove({'='})
+
 set.splitbelow = true
 set.splitright = true
 
