@@ -42,6 +42,8 @@ keymap("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+keymap("n", "<leader>y", '"+y', opts)
+keymap("v", "<leader>y", '"+y', opts)
 
 -- telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
