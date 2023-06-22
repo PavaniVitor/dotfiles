@@ -7,10 +7,7 @@ case $- in
 esac
 
 # My custom prompt
-export PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
-
-
-
+export PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
 
 if  which exa > /dev/null 2>&1; then
 	# exa is a modern ls replacement with Git integration: https://the.exa.website
