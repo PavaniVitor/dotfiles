@@ -1,5 +1,5 @@
 
-FOLDERS="bash,tmux,alacritty,nvim,git"
+FOLDERS="bash,tmux,alacritty,nvim,git,rofi"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 for folder in $(echo $FOLDERS | sed "s/,/ /g")
