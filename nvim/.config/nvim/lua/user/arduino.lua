@@ -5,7 +5,7 @@ local api = vim.api
 -- download arduino-ide 2.0 and place its folder path below.
 
 local config = {
-    board_name = "arduino:avr:mega",
+    board_name = "teensy:avr:teensy31",
     ide_folder_path = os.getenv("HOME") .. "/arduino-ide/",
     cli_yaml_path = os.getenv("HOME") ..  "/.arduino15/arduino-cli.yaml"
 }

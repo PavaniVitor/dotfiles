@@ -6,7 +6,6 @@ return require('packer').startup(function()
     use 'itchyny/lightline.vim'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
-    use 'tpope/vim-commentary'
     use 'tpope/vim-repeat'
 
     use 'neovim/nvim-lspconfig'
@@ -28,10 +27,15 @@ return require('packer').startup(function()
     use 'gruvbox-community/gruvbox'
     use 'NMAC427/guess-indent.nvim'
 
-
     use {
         'nvim-telescope/telescope.nvim', branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
     }
 
     use 'jesseleite/vim-noh'
