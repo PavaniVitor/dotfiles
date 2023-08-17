@@ -1,16 +1,26 @@
-                                                     
+
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {
       'python',
       'lua',
+      'cpp',
+      'bash',
   },
-
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+    disable = {"xml"}
   },
-
+  incremental_selection = {
+      enable = true,
+      keymaps = {
+          init_selection = '<CR>',
+          scope_incremental = '<CR>',
+          node_incremental = '<TAB>',
+          node_decremental = '<S-TAB>',
+      },
+  },
 }
 
 require'treesitter-context'.setup{
@@ -86,9 +96,9 @@ require'treesitter-context'.setup{
         yaml = {
             'block_mapping_pair',
         },
-        -- xml = {
-        --     'block_mapping_pair',
-        -- },
+        xml = {
+            'STag',
+        },
     },
     exact_patterns = {
         -- Example for a specific filetype with Lua patterns
@@ -103,3 +113,4 @@ require'treesitter-context'.setup{
     -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
     separator = nil,
 }
+
