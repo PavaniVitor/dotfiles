@@ -83,7 +83,7 @@ end
 
 local upload = function(upload_port)
     local ino_file = vim.api.nvim_buf_get_name(0)
-    local command = arduino_cli .. " upload " .. "-b " .. board_name .. " " .. ino_file .. " -p " .. upload_port
+    local command = arduino_cli .. " upload " .. "-b " .. config.board_name .. " " .. ino_file .. " -p " .. upload_port
     arduino_command(command, command)
 end
 
