@@ -5,7 +5,6 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use 'itchyny/lightline.vim'
     use 'tpope/vim-fugitive'
-    use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
 
     use 'neovim/nvim-lspconfig'
@@ -37,6 +36,13 @@ return require('packer').startup(function()
             require('Comment').setup()
         end
     }
+    use {
+        "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup({
+            })
+        end
+    }
 
     use 'jesseleite/vim-noh'
     use 'norcalli/nvim-colorizer.lua'
@@ -44,3 +50,4 @@ return require('packer').startup(function()
     use 'sindrets/diffview.nvim'
 
 end)
+
