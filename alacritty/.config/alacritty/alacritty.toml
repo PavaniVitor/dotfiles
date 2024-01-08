@@ -1,0 +1,91 @@
+live_config_reload = true
+
+[colors.bright]
+black = "0x928374"
+blue = "0x83a598"
+cyan = "0x8ec07c"
+green = "0xb8bb26"
+magenta = "0xd3869b"
+red = "0xfb4934"
+white = "0xebdbb2"
+yellow = "0xfabd2f"
+
+[colors.normal]
+black = "0x1d2021"
+blue = "0x458588"
+cyan = "0x689d6a"
+green = "0x98971a"
+magenta = "0xb16286"
+red = "0xcc241d"
+white = "0xebdbb2"
+yellow = "0xd79921"
+
+[colors.primary]
+background = "#191915"
+foreground = "#c5c8c6"
+
+[colors.search.focused_match]
+background = "#FE8019"
+foreground = "#000000"
+
+[colors.search.matches]
+background = "#FABD2F"
+foreground = "#000000"
+
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[font]
+size = 14.5
+
+[font.bold]
+family = "JetBrainsMono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono"
+style = "Regular"
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[hints.enabled]]
+command = "xdg-open"
+post_processing = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "Z"
+mods = "Control|Shift"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Escape"
+mode = "~Search"
+mods = "Alt"
+
+[scrolling]
+history = 50000
+
+[window]
+decorations = "full"
+decorations_theme_variant = "Dark"
+dynamic_title = false
+title = "Terminal"
+
+[window.dimensions]
+columns = 140
+lines = 35
