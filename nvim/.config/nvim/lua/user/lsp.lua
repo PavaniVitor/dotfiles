@@ -12,9 +12,30 @@ require("mason-lspconfig").setup_handlers({
   end,
 })
 
+
 local lspconfig = require("lspconfig")
 -- arduino language server from lsp_installer doesn't work so install it manually.
 lspconfig.gdscript.setup {}
+
+lspconfig.html.setup({
+    capabilities = capabilities,
+    filetypes = { "html", "templ" },
+    opts = {
+        settings = {
+            html = {
+                format = {
+                    templating = true,
+                    wrapLineLength = 120,
+                    wrapAttributes = 'auto',
+                },
+                hover = {
+                    documentation = true,
+                    references = true,
+                },
+            },
+        },
+    }
+})
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")

@@ -11,3 +11,10 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     pattern = {".localrc"},
     command = "set filetype=sh"
 })
+
+-- go html/template
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = {"*.tmpl"},
+    command = "set filetype=html"
+})
+
