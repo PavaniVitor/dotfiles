@@ -4,6 +4,8 @@
 [core]
 	excludesFile = ~/.gitignore
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+	pager = less -x1,5
+
 [init]
 	defaultBranch = main
 [alias]
