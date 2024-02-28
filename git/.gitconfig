@@ -21,6 +21,7 @@
 	# sync and init submodules
 	recursive = "!r() { git submodule sync --recursive && git submodule update --init --recursive; }; r"
 	whatadded = log --diff-filter=A
+	check = diff --check
 
 [url "git@gitlab.com:"]
     insteadOf = https://gitlab.com/
@@ -42,8 +43,10 @@
 	path = nvim
 [merge]
 	tool = vimdiff3
+	algorithm = histogram
 [mergetool "vimdiff3"]
 	path = nvim
+	algorithm = histogram
 
 [mergetool]
 	keepBackup = false
