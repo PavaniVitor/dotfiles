@@ -23,6 +23,8 @@
 	whatadded = log --diff-filter=A
 	check = diff --check
 
+	wdiff = diff --word-diff --word-diff-regex='\\w+'
+
 [url "git@gitlab.com:"]
     insteadOf = https://gitlab.com/
 
@@ -36,17 +38,26 @@
 	required = true
 
 [diff]
-	tool = vimdiff3
+	conflictstyle = diff3
+	tool = nvimdiff
 	algorithm = histogram
 
-[difftool "vimdiff3"]
-	path = nvim
 [merge]
 	tool = vimdiff3
 	algorithm = histogram
+
 [mergetool "vimdiff3"]
 	path = nvim
 	algorithm = histogram
+	conflictstyle = diff3
 
 [mergetool]
 	keepBackup = false
+	prompt = false
+
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate

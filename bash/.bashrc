@@ -103,15 +103,20 @@ bind '"\e[B":history-search-forward'
 # tmux alias to work with colors
 alias tmux='tmux -2'
 
+# use vim as pager
+if [[ "$(command -v nvim)" ]]; then
+  export EDITOR='nvim'
+  export MANPAGER='nvim --clean +Man!'
+  export MANWIDTH=999
+fi
+
+# use zoxide as cd if available
+if [[ "$(command -v zoxide)" ]]; then
+  eval "$(zoxide init --cmd cd bash)"
+fi
+
 # Source local configs
 if [ -f ~/.localrc ]; then
     . ~/.localrc
-fi
-
-# use vim as pager
-if [[ "$(command -v nvim)" ]]; then
-    export EDITOR='nvim'
-    export MANPAGER='nvim --clean +Man!'
-    export MANWIDTH=999
 fi
 
