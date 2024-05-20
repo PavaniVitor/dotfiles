@@ -14,6 +14,8 @@ set.isfname:remove({'='})
 set.splitbelow = true
 set.splitright = true
 
+set.laststatus = 3
+
 set.tabstop = 4
 set.shiftwidth = 4
 set.softtabstop = 4
