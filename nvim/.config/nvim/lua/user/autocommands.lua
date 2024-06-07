@@ -33,6 +33,16 @@ autocmd({"BufWriteCmd", }, {
     group = pavani,
     pattern = "*",
     callback = function()
+        -- skip autocmd for oil buffers
+        local exclude_ft = {"oil"}
+        local current_ft = vim.bo.filetype
+        for _, ft in ipairs(exclude_ft) do
+            if current_ft == ft then
+                pcall( vim.cmd, 'w')
+                return
+            end
+        end
+
         local cursor = vim.api.nvim_win_get_cursor(0)
         local command = "%s/\\s\\+$//e"
         vim.cmd(command)

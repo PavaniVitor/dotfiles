@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
 
     use 'wbthomason/packer.nvim'
     use 'itchyny/lightline.vim'
@@ -39,10 +39,16 @@ return require('packer').startup(function()
     use {
         "kylechui/nvim-surround",
         config = function()
-            require("nvim-surround").setup({
-            })
+            require("nvim-surround").setup({})
         end
     }
+
+    use({
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup()
+        end,
+    })
 
     use 'jesseleite/vim-noh'
     use 'norcalli/nvim-colorizer.lua'
