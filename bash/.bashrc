@@ -119,8 +119,11 @@ if [[ "$(command -v fzf)" ]]; then
   eval "$(fzf --bash)"
 fi
 
+if [[ "$(command -v bat)" ]]; then
+  alias cat="bat --style=plain"
+fi
+
 # Source local configs
 if [ -f ~/.localrc ]; then
     . ~/.localrc
 fi
-
