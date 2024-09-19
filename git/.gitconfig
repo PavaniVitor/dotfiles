@@ -26,10 +26,10 @@
 	wdiff = diff --word-diff --word-diff-regex='\\w+'
 
 [url "git@gitlab.com:"]
-    insteadOf = https://gitlab.com/
+	insteadOf = https://gitlab.com/
 
 [url "git@github.com:"]
-    insteadOf = https://github.com/
+	insteadOf = https://github.com/
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -38,9 +38,17 @@
 	required = true
 
 [diff]
-	conflictstyle = diff3
-	tool = nvimdiff
-	algorithm = histogram
+	tool = difftastic
+	external = difft
+
+[difftool]
+	prompt = false
+
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+	difftool = true
 
 [merge]
 	tool = vimdiff3
