@@ -60,13 +60,19 @@ autocmd({"BufWriteCmd", }, {
 autocmd({"BufEnter", "FocusGained", "InsertLeave"}, {
     group = relative_number,
     pattern = "*",
-    command = 'set relativenumber',
+    callback = function ()
+        if vim.bo.filetype == "term" then
+           return
+        end
+        vim.opt.relativenumber = true
+    end
 })
 autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
     group = relative_number,
     pattern = "*",
     command = 'set norelativenumber',
 })
+
 
 -- highlight cursor line
 autocmd({"VimEnter", "WinEnter", "BufWinEnter"}, {
@@ -78,5 +84,16 @@ autocmd({"WinLeave"}, {
     group = cursor_line,
     pattern = "*",
     command = 'setlocal nocursorline',
+})
+
+autocmd({"TermOpen"}, {
+    group = pavani,
+    callback = function()
+        vim.opt_local.number = false
+        vim.bo.filetype = "term"
+        vim.opt_local.relativenumber = false
+        vim.opt_local.signcolumn = "no"
+        vim.cmd("startinsert")
+    end,
 })
 
