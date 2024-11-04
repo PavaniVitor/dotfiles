@@ -18,3 +18,8 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     command = "set filetype=html"
 })
 
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = {"*.templ"},
+    command = "set filetype=templ"
+})
+

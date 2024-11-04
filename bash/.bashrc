@@ -103,6 +103,8 @@ bind '"\e[B":history-search-forward'
 # tmux alias to work with colors
 alias tmux='tmux -2'
 
+export PATH="$HOME/.nvim/usr/bin/:$PATH"
+
 # use vim as pager
 if [[ "$(command -v nvim)" ]]; then
   export EDITOR='nvim'
@@ -111,19 +113,12 @@ if [[ "$(command -v nvim)" ]]; then
 fi
 
 # use zoxide as cd if available
-if [[ "$(command -v zoxide)" ]]; then
-  eval "$(zoxide init --cmd cd bash)"
-fi
-
-if [[ "$(command -v fzf)" ]]; then
-  eval "$(fzf --bash)"
-fi
-
-if [[ "$(command -v bat)" ]]; then
-  alias cat="bat --style=plain"
-fi
-
+[ "$(command -v zoxide)" ] && eval "$(zoxide init --cmd cd bash)"
+# use fzf as ctrl-r
+[ "$(command -v fzf)" ] && eval "$(fzf --bash)"
 # Source local configs
-if [ -f ~/.localrc ]; then
-    . ~/.localrc
-fi
+[ -f ~/.localrc ] && . ~/.localrc
+# cat with syntax highlight
+[ "$(command -v bat)" ] && alias cat="bat --style=plain"
+
+. "$HOME/.cargo/env"
