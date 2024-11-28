@@ -90,5 +90,3 @@ title = "Terminal"
 columns = 120
 lines = 25
 
-[general]
-live_config_reload = true
