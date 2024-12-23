@@ -1,4 +1,4 @@
-return {
+local M = {
   'saghen/blink.cmp',
   dependencies = 'rafamadriz/friendly-snippets',
   version = '*',
@@ -16,3 +16,6 @@ return {
   },
   opts_extend = { "sources.default" }
 }
+
+return { M }
+
