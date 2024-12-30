@@ -45,11 +45,6 @@ set.swapfile = false
 -- keep cursor 'centered'
 set.scrolloff = 8
 
--- the G ood stuff
-vim.g.gruvbox_contrast_dark = 'hard'
-vim.cmd([[colorscheme gruvbox]])
-
-
 vim.g.netrw_banner = 0
 vim.g.netrm_liststyle = 3
 vim.g.netrw_altv = 1
