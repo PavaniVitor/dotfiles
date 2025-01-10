@@ -32,10 +32,6 @@ keymap("i", "?", "?<c-g>u", opts)
 keymap("i", '"', '"<c-g>u', opts)
 keymap("i", "'", "'<c-g>u", opts)
 
--------------
--- PLUGINS --
--------------
-
 -- lsp
 keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 keymap("n", "<leader>gi", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -46,10 +42,3 @@ keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 keymap("n", "<leader>y", '"+y', opts)
 keymap("v", "<leader>y", '"+y', opts)
 keymap("n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-
--- telescope
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
-keymap("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", opts)
-
