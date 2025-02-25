@@ -65,7 +65,27 @@
 
 [rerere]
 	enabled = true
+
 [column]
 	ui = auto
+
 [branch]
 	sort = -committerdate
+
+[tag]
+    sort = version:refname
+
+[push]
+    default = simple
+    autoSetupRemote = true
+
+[commit]
+    verbose = true
+
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+
+[help]
+    autocorrect = prompt
