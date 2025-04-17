@@ -97,3 +97,10 @@ autocmd({"TermOpen"}, {
     end,
 })
 
+-- run "go fmt" on golang files save
+autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    vim.cmd([[silent! lua vim.lsp.buf.format()]])
+  end,
+})
