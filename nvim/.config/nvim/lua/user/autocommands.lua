@@ -29,17 +29,24 @@ autocmd('VimResized', {
 })
 
 -- trim whitespaces and write sudo files
-autocmd({"BufWriteCmd", }, {
+autocmd({ "BufWriteCmd", }, {
     group = pavani,
     pattern = "*",
     callback = function()
         -- skip autocmd for oil buffers
-        local exclude_ft = {"oil"}
+        local exclude_ft = { "oil" }
         local current_ft = vim.bo.filetype
         for _, ft in ipairs(exclude_ft) do
             if current_ft == ft then
-                pcall( vim.cmd, 'w')
+                pcall(vim.cmd, 'w')
                 return
+            end
+        end
+
+        local format_fts = { "go", "lua" }
+        for _, ft in ipairs(format_fts) do
+            if current_ft == ft then
+                vim.lsp.buf.format()
             end
         end
 
@@ -47,27 +54,27 @@ autocmd({"BufWriteCmd", }, {
         local command = "%s/\\s\\+$//e"
         vim.cmd(command)
         vim.api.nvim_win_set_cursor(0, cursor)
-        local ok, result = pcall( vim.cmd, 'w')
+        local ok, result = pcall(vim.cmd, 'w')
         if (ok) then
             return
         end
         sudo_write()
-	vim.cmd("e! %")
+        vim.cmd("e! %")
     end,
 })
 
 -- relative numbers in insert mode
-autocmd({"BufEnter", "FocusGained", "InsertLeave"}, {
+autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
     group = relative_number,
     pattern = "*",
-    callback = function ()
+    callback = function()
         if vim.bo.filetype == "term" then
-           return
+            return
         end
         vim.opt.relativenumber = true
     end
 })
-autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
+autocmd({ "BufLeave", "FocusLost", "InsertEnter" }, {
     group = relative_number,
     pattern = "*",
     command = 'set norelativenumber',
@@ -75,18 +82,18 @@ autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
 
 
 -- highlight cursor line
-autocmd({"VimEnter", "WinEnter", "BufWinEnter"}, {
+autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
     group = cursor_line,
     pattern = "*",
     command = 'setlocal cursorline',
 })
-autocmd({"WinLeave"}, {
+autocmd({ "WinLeave" }, {
     group = cursor_line,
     pattern = "*",
     command = 'setlocal nocursorline',
 })
 
-autocmd({"TermOpen"}, {
+autocmd({ "TermOpen" }, {
     group = pavani,
     callback = function()
         vim.opt_local.number = false
@@ -99,8 +106,8 @@ autocmd({"TermOpen"}, {
 
 -- run "go fmt" on golang files save
 autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-    vim.cmd([[silent! lua vim.lsp.buf.format()]])
-  end,
+    pattern = "*.go",
+    callback = function()
+        vim.lsp.buf.format()
+    end,
 })
