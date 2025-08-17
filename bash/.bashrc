@@ -7,7 +7,15 @@ case $- in
 esac
 
 # My custom prompt
-export PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
+set_prompt() {
+    if [ -n "$CONTAINER_ID" ]; then
+        PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\].\[$(tput sgr0)\]\[\033[38;5;13m\]$CONTAINER_ID\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
+    else
+        PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
+    fi
+}
+
+PROMPT_COMMAND=set_prompt
 
 if  which exa > /dev/null 2>&1; then
 	# exa is a modern ls replacement with Git integration: https://the.exa.website
@@ -116,9 +124,8 @@ fi
 [ "$(command -v zoxide)" ] && eval "$(zoxide init --cmd cd bash)"
 # use fzf as ctrl-r
 [ "$(command -v fzf)" ] && eval "$(fzf --bash)"
-# Source local configs
-[ -f ~/.localrc ] && . ~/.localrc
 # cat with syntax highlight
 [ "$(command -v bat)" ] && alias cat="bat --style=plain"
-
-. "$HOME/.cargo/env"
+# Source local configs
+[ -f ~/.localrc ] && . ~/.localrc
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
