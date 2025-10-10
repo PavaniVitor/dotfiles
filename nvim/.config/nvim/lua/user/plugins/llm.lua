@@ -6,7 +6,9 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            require("codecompanion").setup {
+            local cc = require("codecompanion")
+
+            cc.setup {
                 strategies = {
                     chat = {
                         adapter = "ollama-qwen2.5-coder",
@@ -16,38 +18,25 @@ return {
                     },
                 },
                 adapters = {
-                    ["ollama-qwen2.5-coder"] = function()
-                        return require("codecompanion.adapters").extend(
-                            "ollama",
-                            {
+                    http = {
+                        ["ollama-qwen2.5-coder"] = function()
+                            return require("codecompanion.adapters").extend("ollama", {
                                 name = "qwen2.5-coder",
                                 schema = {
-                                    model = {
-                                        default = "qwen2.5-coder:7b",
-                                    },
-                                    num_ctx = {
-                                        default = 16384,
-                                    },
-                                    num_predict = {
-                                        default = -1,
-                                    },
+                                    model = { default = "qwen2.5-coder:7b" },
+                                    num_ctx = { default = 16384 },
+                                    num_predict = { default = -1 },
                                 },
-                            }
-                        )
-                    end,
+                            })
+                        end,
+                    },
                 },
             }
 
-            vim.keymap.set(
-                "n",
-                "<leader>Cc",
-                "<cmd>CodeCompanionChat Toggle<CR>"
-            )
-            vim.keymap.set(
-                { "n", "v", "s" },
-                "<leader>Ca",
-                "<cmd>CodeCompanionActions<CR>"
-            )
+            -- atalhos
+            vim.keymap.set("n", "<leader>Cc", "<cmd>CodeCompanionChat Toggle<CR>")
+            vim.keymap.set({ "n", "v", "s" }, "<leader>Ca", "<cmd>CodeCompanionActions<CR>")
         end,
     },
 }
+
