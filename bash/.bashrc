@@ -129,3 +129,7 @@ fi
 # Source local configs
 [ -f ~/.localrc ] && . ~/.localrc
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+if [[ -f ~/.nvim/AppRun ]] then
+    alias vim=~/.nvim/AppRun
+fi
