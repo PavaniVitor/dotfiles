@@ -1,0 +1,4 @@
+shell-integration-features = sudo,ssh-env
+window-decoration = server
+
+theme = Gruvbox Material
