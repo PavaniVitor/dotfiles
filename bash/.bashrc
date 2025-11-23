@@ -8,12 +8,17 @@ esac
 
 # My custom prompt
 set_prompt() {
+    # Prefixo do virtualenv (só aparece se VIRTUAL_ENV existir)
+    venv='${VIRTUAL_ENV:+($(basename "$VIRTUAL_ENV")) }'
+
     if [ -n "$CONTAINER_ID" ]; then
-        PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\].\[$(tput sgr0)\]\[\033[38;5;13m\]$CONTAINER_ID\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
+        PS1="\[\033[38;5;14m\][${venv}\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\].\[$(tput sgr0)\]\[\033[38;5;13m\]$CONTAINER_ID\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
     else
-        PS1="\[\033[38;5;14m\][\[$(tput sgr0)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
+        PS1="\[\033[38;5;14m\][${venv}\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;85m\] \[$(tput sgr0)\]\[\033[38;5;4m\]\W\[$(tput sgr0)\]\[\033[38;5;14m\]]\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
     fi
 }
+
+PROMPT_COMMAND=set_prompt
 
 PROMPT_COMMAND=set_prompt
 
