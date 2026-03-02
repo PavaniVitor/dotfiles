@@ -37,15 +37,6 @@
 	process = git-lfs filter-process
 	required = true
 
-[diff]
-	tool = difftastic
-
-[difftool]
-	prompt = false
-
-[difftool "difftastic"]
-	cmd = difftastic "$LOCAL" "$REMOTE"
-
 [pager]
 	difftool = true
 
