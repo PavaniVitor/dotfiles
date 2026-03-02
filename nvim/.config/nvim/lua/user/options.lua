@@ -9,7 +9,7 @@ set.mouse = ""
 set.number = true
 set.signcolumn = "yes"
 
-set.isfname:remove({'='})
+set.isfname:remove({ '=' })
 
 set.splitbelow = true
 set.splitright = true
@@ -33,9 +33,9 @@ set.hlsearch = true
 set.showmode = false
 
 set.showmatch = true
-set.backspace="indent,eol,start"
+set.backspace = "indent,eol,start"
 
-set.completeopt = {"menuone", "noinsert", "noselect"}
+set.completeopt = { "menuone", "noinsert", "noselect" }
 
 set.undofile = true
 -- i really hate swap files!
@@ -46,6 +46,5 @@ set.swapfile = false
 set.scrolloff = 8
 
 vim.g.netrw_banner = 0
-vim.g.netrm_liststyle = 3
+vim.g.netrw_liststyle = 3
 vim.g.netrw_altv = 1
-
