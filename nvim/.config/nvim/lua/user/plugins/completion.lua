@@ -1,21 +1,60 @@
 local M = {
-  'saghen/blink.cmp',
-  dependencies = 'rafamadriz/friendly-snippets',
-  version = '*',
+    "saghen/blink.cmp",
+    version = "1.*",
 
-  opts = {
-    keymap = { preset = 'default' },
-    signature = { enabled = true },
+    dependencies = {
+        "rafamadriz/friendly-snippets",
+    },
 
-    appearance = {
-      use_nvim_cmp_as_default = true,
+    build = "cargo build --release",
+
+    -- Configuration for blink.cmp including keymaps, appearance, completion behavior, and sources
+    opts = {
+        keymap = { preset = "default" },
+
+        signature = { enabled = true },
+
+        appearance = {
+            nerd_font_variant = "mono",
+        },
+
+        completion = {
+            documentation = { auto_show = true },
+            menu = {
+                auto_show = true,
+            },
+        },
+
+        sources = {
+            default = { "lsp", "path", "snippets", "buffer" },
+        },
+
+        cmdline = {
+            enabled = true,
+
+            completion = {
+                menu = { auto_show = true },
+            },
+
+            sources = function()
+                local type = vim.fn.getcmdtype()
+
+                -- busca no buffer
+                if type == "/" or type == "?" then
+                    return { "buffer" }
+                end
+
+                -- command mode
+                if type == ":" then
+                    return { "cmdline", "path" }
+                end
+
+                return {}
+            end,
+        },
     },
-    sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
-  },
-  opts_extend = { "sources.default" }
+
+    opts_extend = { "sources.default" }
 }
 
 return { M }
-

@@ -1,6 +1,7 @@
 local M = {
     "ellisonleao/gruvbox.nvim",
     config = function()
+        -- Configuração do tema gruvbox: contraste intenso e itálico desabilitado
         require("gruvbox").setup {
             contrast = "hard",
             italic = {

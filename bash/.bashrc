@@ -135,9 +135,10 @@ fi
 [ -f ~/.localrc ] && . ~/.localrc
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 # use difftastic as git diff if available
-[ "$(command -v difft)" ] && export GIT_EXTERNAL_DIFF=difft
+# [ "$(command -v difft)" ] && export GIT_EXTERNAL_DIFF=difft
 
 if [[ -f ~/.nvim/AppRun ]] then
     alias vim=~/.nvim/AppRun
 fi
+
 

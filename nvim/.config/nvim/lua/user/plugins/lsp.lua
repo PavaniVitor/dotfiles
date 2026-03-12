@@ -1,78 +1,89 @@
 local M = {
-  {
-    'williamboman/mason.nvim',
-    config = function()
-      require("mason").setup()
-    end
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    dependencies = {
-        'neovim/nvim-lspconfig',
-        'saghen/blink.cmp',
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end
     },
-    config = function()
-     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      require("mason-lspconfig").setup()
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          require("lspconfig")[server_name].setup {
-            capabilities = capabilities,
-          }
-        end,
-      })
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "saghen/blink.cmp",
+        },
 
-      local lspconfig = require("lspconfig")
+        config = function()
+            local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-      -- Specific LSP configurations
-      lspconfig.gdscript.setup {}
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "lua_ls",
+                    "html",
+                    "clangd",
+                    "pyright",
+                }
+            })
 
-      lspconfig.html.setup({
-        capabilities = capabilities,
-        filetypes = { "html", "templ" },
-        settings = {
-          html = {
-            format = {
-              templating = true,
-              wrapLineLength = 120,
-              wrapAttributes = 'auto',
-            },
-            hover = {
-              documentation = true,
-              references = true,
-            },
-          },
-        }
-      })
+            -- html
+            vim.lsp.config("html", {
+                capabilities = capabilities,
+                filetypes = { "html", "templ" },
+                settings = {
+                    html = {
+                        format = {
+                            templating = true,
+                            wrapLineLength = 120,
+                            wrapAttributes = "auto",
+                        },
+                        hover = {
+                            documentation = true,
+                            references = true,
+                        },
+                    },
+                },
+            })
 
-      -- Lua LSP configuration
-      local runtime_path = vim.split(package.path, ";")
-      table.insert(runtime_path, "lua/?.lua")
-      table.insert(runtime_path, "lua/?/init.lua")
+            -- gdscript
+            vim.lsp.config("gdscript", {
+                capabilities = capabilities
+            })
 
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            runtime = {
-              version = "LuaJIT",
-              path = runtime_path,
-            },
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
-            telemetry = {
-              enable = false,
-            },
-          },
-        }
-      })
-    end
-  }
+            -- lua
+            local runtime_path = vim.split(package.path, ";")
+            table.insert(runtime_path, "lua/?.lua")
+            table.insert(runtime_path, "lua/?/init.lua")
+
+            vim.lsp.config("lua_ls", {
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = "LuaJIT",
+                            path = runtime_path,
+                        },
+                        diagnostics = {
+                            globals = { "vim" },
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                        telemetry = {
+                            enable = false,
+                        },
+                    },
+                },
+            })
+
+            -- enable servers
+            vim.lsp.enable({
+                "lua_ls",
+                "html",
+                "gdscript",
+            })
+        end
+    }
 }
 
-return { M }
+return M
