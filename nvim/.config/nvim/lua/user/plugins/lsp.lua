@@ -19,9 +19,9 @@ local M = {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
-                    "html",
+                    -- "html",
                     "clangd",
-                    "pyright",
+                    -- "pyright",
                 }
             })
 

@@ -24,8 +24,8 @@ PROMPT_COMMAND=set_prompt
 
 if  which exa > /dev/null 2>&1; then
 	# exa is a modern ls replacement with Git integration: https://the.exa.website
-	alias ls="exa --git-ignore"
-	alias ll="exa --git-ignore --git -l --group"
+	alias ls="exa"
+	alias ll="exa --git -l --group"
 	alias la="exa --git -la"
 else
 	alias ls="ls --color=always"
@@ -135,10 +135,9 @@ fi
 [ -f ~/.localrc ] && . ~/.localrc
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 # use difftastic as git diff if available
-# [ "$(command -v difft)" ] && export GIT_EXTERNAL_DIFF=difft
+[ "$(command -v difft)" ] && export GIT_EXTERNAL_DIFF=difft
 
 if [[ -f ~/.nvim/AppRun ]] then
     alias vim=~/.nvim/AppRun
 fi
-
 
