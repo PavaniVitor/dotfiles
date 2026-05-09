@@ -20,13 +20,10 @@ set_prompt() {
 
 PROMPT_COMMAND=set_prompt
 
-PROMPT_COMMAND=set_prompt
-
-if  which exa > /dev/null 2>&1; then
-	# exa is a modern ls replacement with Git integration: https://the.exa.website
-	alias ls="exa"
-	alias ll="exa --git -l --group"
-	alias la="exa --git -la"
+if  which eza > /dev/null 2>&1; then
+	alias ls="eza"
+	alias ll="eza --git -l --group"
+	alias la="eza --git -la"
 else
 	alias ls="ls --color=always"
 	alias ll="ls -l"
@@ -36,10 +33,6 @@ for alias in lsl sls lsls sl l s; do alias $alias=ls; done
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# search through history with up/down arrows
-bind '"\e[A": history-search-backward' 2>/dev/null
-bind '"\e[B": history-search-forward' 2>/dev/null
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -70,7 +63,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # If ag is not installed, alias it to "grep -rn" (and generally force color for grep)
 alias grep="grep --color=always"
-which ag 2>/dev/null  || alias ag="grep -rn"
+which ag > /dev/null 2>&1 || alias ag="grep -rn"
 
 # Open file with open
 alias open="xdg-open"
@@ -109,14 +102,11 @@ bind 'TAB':menu-complete
 bind "set menu-complete-display-prefix on"
 
 # Cycle through history based on characters already typed on the line
-
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
 # tmux alias to work with colors
 alias tmux='tmux -2'
-
-export PATH="$HOME/.nvim/usr/bin/:$PATH"
 
 # use vim as pager
 if [[ "$(command -v nvim)" ]]; then
@@ -138,7 +128,7 @@ fi
 [ "$(command -v difft)" ] && export GIT_EXTERNAL_DIFF=difft
 [ -f "$HOME/.env" ] && . "$HOME/.env"
 
-if [[ -f ~/.nvim/AppRun ]] then
+if [[ -f ~/.nvim/AppRun ]]; then
     alias vim=~/.nvim/AppRun
 fi
 
