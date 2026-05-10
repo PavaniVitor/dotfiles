@@ -113,6 +113,7 @@ if [[ "$(command -v nvim)" ]]; then
   export EDITOR='nvim'
   export MANPAGER='nvim --clean +Man!'
   export MANWIDTH=999
+  export NVIM_APPNAME=pavani
 fi
 
 # use zoxide as cd if available
@@ -128,7 +129,4 @@ fi
 [ "$(command -v difft)" ] && export GIT_EXTERNAL_DIFF=difft
 [ -f "$HOME/.env" ] && . "$HOME/.env"
 
-if [[ -f ~/.nvim/AppRun ]]; then
-    alias vim=~/.nvim/AppRun
-fi
-
+[ "$(command -v nvim)" ] && alias vim="nvim"
