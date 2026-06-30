@@ -1,4 +1,4 @@
-.PHONY: all binaries nvim zoxide fzf bat eza difftastic stow git-status
+.PHONY: all binaries nvim zoxide fzf bat eza difftastic tree-sitter stow git-status
 
 FOLDERS = bash tmux ghostty nvim git rofi
 LOCAL_BIN := $(HOME)/.local/bin
@@ -32,7 +32,7 @@ git-status:
 # ------------------------------------------------------------
 # Binaries
 # ------------------------------------------------------------
-binaries: nvim zoxide fzf bat eza difftastic
+binaries: nvim zoxide fzf bat eza difftastic tree-sitter
 
 nvim:
 	@if [ -f $(HOME)/.nvim/root/usr/bin/nvim ]; then \
@@ -119,6 +119,27 @@ difftastic:
 		curl -sL "$$URL" | tar -xzf - -C "$$_tmpdir"; \
 		find "$$_tmpdir" -name 'difft' -type f -exec cp {} $(LOCAL_BIN)/difft \;; \
 		chmod +x $(LOCAL_BIN)/difft; \
+		rm -rf "$$_tmpdir"; \
+		echo "  done."; \
+	fi
+
+tree-sitter:
+	@if command -v tree-sitter > /dev/null 2>&1; then \
+		echo "tree-sitter already installed, skipping."; \
+	else \
+		echo "[install] tree-sitter"; \
+		URL=$$(curl -sL https://api.github.com/repos/tree-sitter/tree-sitter/releases/latest \
+			| grep -oP '"browser_download_url": "\K[^"]*tree-sitter-linux-x64\.gz' | head -1); \
+		_tmpdir=$$(mktemp -d); \
+		curl -sL "$$URL" -o "$$_tmpdir/tree-sitter.gz"; \
+		if [ "$$(stat -c%s "$$_tmpdir/tree-sitter.gz")" -lt 1048576 ]; then \
+			echo "Error: tree-sitter download failed."; \
+			rm -rf "$$_tmpdir"; \
+			exit 1; \
+		fi; \
+		gunzip -f "$$_tmpdir/tree-sitter.gz"; \
+		mv "$$_tmpdir/tree-sitter" $(LOCAL_BIN)/tree-sitter; \
+		chmod +x $(LOCAL_BIN)/tree-sitter; \
 		rm -rf "$$_tmpdir"; \
 		echo "  done."; \
 	fi

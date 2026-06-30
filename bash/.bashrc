@@ -130,3 +130,5 @@ fi
 [ -f "$HOME/.env" ] && . "$HOME/.env"
 
 [ "$(command -v nvim)" ] && alias vim="nvim"
+
+. "$HOME/.local/share/../bin/env"
