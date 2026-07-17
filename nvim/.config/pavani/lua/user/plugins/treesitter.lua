@@ -12,13 +12,20 @@ local M = {
             group = vim.api.nvim_create_augroup("user.treesitter", { clear = true }),
             callback = function(args)
                 local buf = args.buf
-                if not pcall(vim.treesitter.start, buf) then
+                local ft = vim.bo[buf].filetype
+                local lang = vim.treesitter.language.get_lang(ft)
+
+                print(lang)
+                if not lang then
+                    return
+                end
+
+                if not pcall(vim.treesitter.start, buf, lang) then
                     return
                 end
                 vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                vim.wo[0][0].foldmethod = "expr"
-                vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-                vim.wo[0][0].foldlevel = 99
+                vim.bo[buf].smartindent = false
+                vim.bo[buf].cindent = false
             end,
         })
 
