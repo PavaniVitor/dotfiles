@@ -1,6 +1,6 @@
 .PHONY: all binaries nvim zoxide fzf bat eza difftastic tree-sitter stow git-status
 
-FOLDERS = bash tmux ghostty nvim git rofi
+FOLDERS = bash tmux ghostty nvim git rofi alacritty
 LOCAL_BIN := $(HOME)/.local/bin
 
 all: git-status binaries stow

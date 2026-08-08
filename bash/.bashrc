@@ -132,3 +132,5 @@ fi
 [ "$(command -v nvim)" ] && alias vim="nvim"
 
 . "$HOME/.local/share/../bin/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
