@@ -5,3 +5,8 @@ window-decoration = server
 # gruvbox with tweaks
 
 theme = gruvbox-pavani
+
+copy-on-select = clipboard
+clipboard-read = allow
+clipboard-write = allow
+
